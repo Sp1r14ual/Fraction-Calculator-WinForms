@@ -24,20 +24,28 @@
 
         private KeyValuePair<int, int> unify_fraction(int a, int b)
         {
+            int num = a; 
+            int den = b;
             int gcd = GCD(Math.Abs(a), Math.Abs(b));
+
             if (gcd > 1)
+            {
                 if ((a < 0 && b < 0) || (a > 0 && b > 0))
                 {
-                    a = Math.Abs(a) / gcd;
-                    b = Math.Abs(b) / gcd;
+                    num = Math.Abs(a) / gcd;
+                    den = Math.Abs(b) / gcd;
                 }
                 else
                 {
-                    a = a > 0 ? a / gcd : -(Math.Abs(a) / gcd);
-                    b = b > 0 ? b / gcd : -(Math.Abs(b) / gcd);
-                }
+                    //a = a > 0 ? a / gcd : -(Math.Abs(a) / gcd);
+                    //b = b > 0 ? b / gcd : -(Math.Abs(b) / gcd);
 
-            return new KeyValuePair<int, int>(a, b);
+                    num = a < 0 ? a / gcd : -a / gcd;
+                    den = Math.Abs(b) / gcd;
+                }
+            }
+
+            return new KeyValuePair<int, int>(num, den);
         }
 
         public TFrac()
@@ -62,6 +70,12 @@
 
         public TFrac(string fraction_str)
         {
+            if (fraction_str == String.Empty)
+            {
+                Numerator = 0;
+                Denominator = 1;
+            }
+
             if (!(fraction_str.Contains('/')))
             {
                 Numerator = Convert.ToInt32(fraction_str);
@@ -76,6 +90,11 @@
 
             Numerator = fraction.Key;
             Denominator = fraction.Value;
+        }
+
+        public bool Empty()
+        {
+            return Numerator == 0 && Denominator == 1;
         }
 
         public TFrac Copy()
@@ -173,41 +192,41 @@
         }
         public static bool operator ==(TFrac a, TFrac b)
         {
-            return a.Numerator == b.Numerator && a.Denominator == b.Denominator ? true : false;
+            return a.Numerator == b.Numerator && a.Denominator == b.Denominator;
         }
 
         public static bool operator !=(TFrac a, TFrac b)
         {
-            return a.Numerator != b.Numerator || a.Denominator != b.Denominator ? true : false;
+            return a.Numerator != b.Numerator || a.Denominator != b.Denominator;
         }
 
         public bool Equals(TFrac fraction)
         {
-            return Numerator == fraction.Numerator && Denominator == fraction.Denominator ? true : false;
+            return Numerator == fraction.Numerator && Denominator == fraction.Denominator;
         }
 
         public static bool operator >(TFrac a, TFrac b)
         {
             if (a.Denominator == b.Denominator)
-                return a.Numerator > b.Numerator ? true : false;
+                return a.Numerator > b.Numerator;
 
-            return (a - b).Numerator > 0 ? true : false;
+            return (a - b).Numerator > 0;
         }
 
         public static bool operator <(TFrac a, TFrac b)
         {
             if (a.Denominator == b.Denominator)
-                return a.Numerator < b.Numerator ? true : false;
+                return a.Numerator < b.Numerator;
 
-            return (b - a).Numerator > 0 ? true : false;
+            return (b - a).Numerator > 0;
         }
 
         public bool Greater(TFrac fraction)
         {
             if (Denominator == fraction.Denominator)
-                return Numerator > fraction.Numerator ? true : false;
+                return Numerator > fraction.Numerator;
 
-            return Subtract(fraction).Numerator > 0 ? true : false;
+            return Subtract(fraction).Numerator > 0;
         }
 
         public int GetNumeratorInt()

@@ -52,10 +52,10 @@
             switch (function)
             {
                 case "Sqr":
-                    Rop = Rop.Square();
+                    Rop = Operation == State.None ? Lop_Res = Lop_Res.Square() : Rop.Square();
                     break;
                 case "Rev":
-                    Rop = Rop.Reciprocal();
+                    Rop = Operation == State.None ? Lop_Res = Lop_Res.Reciprocal() : Rop.Reciprocal();
                     break;
             }
         }

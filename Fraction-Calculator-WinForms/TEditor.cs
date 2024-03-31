@@ -2,7 +2,7 @@
 {
     internal class TEditor
     {
-        private string str = String.Empty;
+        private string str;
 
         private const string separator = "/";
 
@@ -80,6 +80,11 @@
             return str;
         }
 
+        public bool Empty()
+        {
+            return str == String.Empty;
+        }
+
         public string Edit(string a)
         {
             switch (a)
@@ -117,18 +122,21 @@
                 case "\\":
                     AddSymbol("/");
                     return String;
-                case "+":
-                    AddSymbol(" + ");
+                case "Sgn":
+                    AddSign();
                     return String;
-                case "-":
-                    AddSymbol(" - ");
-                    return String;
-                case "*":
-                    AddSymbol(" * ");
-                    return String;
-                case "/":
-                    AddSymbol(" : ");
-                    return String;
+                //case "+":
+                //    AddSymbol("+");
+                //    return String;
+                //case "-":
+                //    AddSymbol("-");
+                //    return String;
+                //case "*":
+                //    AddSymbol("*");
+                //    return String;
+                //case "/":
+                //    AddSymbol(":");
+                //    return String;
                 case "BS":
                     BackSpace();
                     return String;

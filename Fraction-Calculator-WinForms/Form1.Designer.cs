@@ -172,6 +172,7 @@
             button11.TabIndex = 11;
             button11.Text = "+\\-";
             button11.UseVisualStyleBackColor = true;
+            button11.Click += button11_Click;
             // 
             // button12
             // 
@@ -231,6 +232,7 @@
             button17.TabIndex = 17;
             button17.Text = "=";
             button17.UseVisualStyleBackColor = true;
+            button17.Click += button17_Click;
             // 
             // button18
             // 
@@ -238,8 +240,9 @@
             button18.Name = "button18";
             button18.Size = new Size(58, 50);
             button18.TabIndex = 18;
-            button18.Text = "Sqr";
+            button18.Text = "x^2";
             button18.UseVisualStyleBackColor = true;
+            button18.Click += button18_Click;
             // 
             // button19
             // 
@@ -249,6 +252,7 @@
             button19.TabIndex = 19;
             button19.Text = "1/x";
             button19.UseVisualStyleBackColor = true;
+            button19.Click += button19_Click;
             // 
             // button20
             // 
@@ -314,6 +318,7 @@
             button26.TabIndex = 26;
             button26.Text = "C";
             button26.UseVisualStyleBackColor = true;
+            button26.Click += button26_Click;
             // 
             // Form1
             // 
