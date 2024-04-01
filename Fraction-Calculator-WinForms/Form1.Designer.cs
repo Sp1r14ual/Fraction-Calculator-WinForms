@@ -262,6 +262,7 @@
             button20.TabIndex = 20;
             button20.Text = "M+";
             button20.UseVisualStyleBackColor = true;
+            button20.Click += button20_Click;
             // 
             // button21
             // 
@@ -271,6 +272,7 @@
             button21.TabIndex = 21;
             button21.Text = "MS";
             button21.UseVisualStyleBackColor = true;
+            button21.Click += button21_Click;
             // 
             // button22
             // 
@@ -280,6 +282,7 @@
             button22.TabIndex = 22;
             button22.Text = "MR";
             button22.UseVisualStyleBackColor = true;
+            button22.Click += button22_Click;
             // 
             // button23
             // 
@@ -289,6 +292,7 @@
             button23.TabIndex = 23;
             button23.Text = "MC";
             button23.UseVisualStyleBackColor = true;
+            button23.Click += button23_Click;
             // 
             // button24
             // 

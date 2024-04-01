@@ -98,6 +98,23 @@ namespace Fraction_Calculator_WinForms
             textBox1.Text = controller.CalculatorCommand("Rev");
         }
 
+        private void button20_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = controller.CalculatorCommand("M+");
+        }
+        private void button21_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = controller.CalculatorCommand("MS");
+        }
+        private void button22_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = controller.CalculatorCommand("MR");
+        }
+        private void button23_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = controller.CalculatorCommand("MC");
+        }
+
         private void button24_Click(object sender, EventArgs e)
         {
             textBox1.Text = controller.CalculatorCommand("BS");
@@ -114,7 +131,5 @@ namespace Fraction_Calculator_WinForms
             controller.Proc.ReSet();
             textBox1.Text = controller.CalculatorCommand("CE");
         }
-
-
     }
 }

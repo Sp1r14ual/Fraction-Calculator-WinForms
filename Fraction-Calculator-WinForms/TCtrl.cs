@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Fraction_Calculator_WinForms
 {
@@ -11,6 +12,9 @@ namespace Fraction_Calculator_WinForms
         public TFrac Fraction;
         public TCtlrState CtrlState;
         public enum TCtlrState { cStart, cEditing, FunDone, cValDone, cExpDone, cOpChange, cError }
+
+        //костыль
+        private string LastOperation;
 
         //private List<String> History;
 
@@ -34,7 +38,25 @@ namespace Fraction_Calculator_WinForms
         {
             switch (c)
             {
-
+                case "M+":
+                    if (Fraction.Empty())
+                        Memory.TAdd(Proc.Lop_Res_Read());
+                    else
+                        Memory.TAdd(Fraction);
+                    break;
+                case "MS":
+                    if (Fraction.Empty())
+                        Memory.TStore(Proc.Lop_Res_Read());
+                    else
+                        Memory.TStore(Fraction);
+                    break;
+                case "MR":
+                    Fraction = Memory.TGet();
+                    Editor.String = Fraction.GetFractionString();
+                    break;
+                case "MC":
+                    Memory.TClear();
+                    break;
             }
         }
 
@@ -54,8 +76,6 @@ namespace Fraction_Calculator_WinForms
                 case "/":
                     Proc.OprtnSet("Dvd");
                     break;
-                default:
-                    break;
             }
         }
 
@@ -69,15 +89,41 @@ namespace Fraction_Calculator_WinForms
                 case "Rev":
                     Proc.FuncRun("Rev");
                     break;
-                default:
-                    break;
             }
         }
         
         public string CalculatorCommand(string c)
         {
+            // Костыль на случай если Editor.Empty()
+            try
+            {
+                Fraction = new TFrac(Editor.String);
+            }
+            catch
+            {
+                Fraction = Proc.Lop_Res_Read();
+                if (Editor.Empty() && Proc.Rop_Read().Empty() && c == "=")
+                    Proc.Rop_Set(Fraction);
+            }
+            //Мб можно придумать что-то получше?
+
+            //Ещё костыль
+            if (c != "=" && LastOperation == "=")
+            {
+                Editor.Clear();
+                Proc.Rop_Set(new TFrac());
+                LastOperation = c;
+                return Proc.Lop_Res_Read().GetFractionString();
+            }
+            //Запомните, сукины дети, костыли это круто!
+            //Давайте делать больше костылей
+            //Давайте всё утыкаем этими костылями
+            //Это же так весело, правда?
+
+            LastOperation = c;
+
             EditCommand(c);
-            //MemoryCommand(c);
+            MemoryCommand(c);
 
             switch (c)
             {
@@ -88,22 +134,6 @@ namespace Fraction_Calculator_WinForms
                 case "=":
                 case "Sqr":
                 case "Rev":
-
-                    // Костыль на случай если Editor.Empty()
-                    try
-                    {
-                        Fraction = new TFrac(Editor.String);
-                    }
-                    catch
-                    {
-                        if (c == "=")
-                        {
-                            Fraction = Proc.Lop_Res_Read();
-                            //Proc.Rop_Set(Fraction);
-                        }
-                    }
-                    //Мб можно придумать что-то получше?
-
                     if (!Editor.Empty())
                     {
                         if (Proc.Lop_Res_Read().Empty() && Proc.OprtnRead() == "None")

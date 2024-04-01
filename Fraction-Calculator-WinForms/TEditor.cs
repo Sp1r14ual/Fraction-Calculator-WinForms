@@ -120,6 +120,8 @@
                     AddDigit(9);
                     return String;
                 case "\\":
+                    if (String.Contains('/'))
+                        return String;
                     AddSymbol("/");
                     return String;
                 case "Sgn":
