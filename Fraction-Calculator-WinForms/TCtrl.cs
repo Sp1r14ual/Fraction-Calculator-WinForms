@@ -30,6 +30,14 @@ namespace Fraction_Calculator_WinForms
             Editor.Edit(c);
         }
 
+        public void MemoryCommand(string c)
+        {
+            switch (c)
+            {
+
+            }
+        }
+
         public void OperationCommand(string c)
         {
             switch (c)
@@ -81,14 +89,18 @@ namespace Fraction_Calculator_WinForms
                 case "Sqr":
                 case "Rev":
 
-                    // Костыль
+                    // Костыль на случай если Editor.Empty()
                     try
                     {
                         Fraction = new TFrac(Editor.String);
                     }
                     catch
                     {
-                        Fraction = Proc.Lop_Res_Read();
+                        if (c == "=")
+                        {
+                            Fraction = Proc.Lop_Res_Read();
+                            //Proc.Rop_Set(Fraction);
+                        }
                     }
                     //Мб можно придумать что-то получше?
 
@@ -101,9 +113,9 @@ namespace Fraction_Calculator_WinForms
 
                         Editor.Clear();
                     }
-                    //else
+                    //if (Editor.Empty() && c != "=")
                     //{
-                    //    Fraction = Proc.Lop_Res_Read();
+                    //    //Fraction = Proc.Lop_Res_Read();
                     //    Proc.Rop_Set(Fraction);
                     //}
 
