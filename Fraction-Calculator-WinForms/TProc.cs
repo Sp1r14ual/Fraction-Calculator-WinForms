@@ -1,6 +1,6 @@
 ﻿namespace Fraction_Calculator_WinForms
 {
-    internal class TProc
+    public class TProc
     {
         public TFrac Lop_Res;
         public TFrac Rop;

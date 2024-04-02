@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 
 namespace Fraction_Calculator_WinForms
 {
-    internal class TCtrl
+    public class TCtrl
     {
         public TEditor Editor;
         public TProc Proc;
@@ -13,10 +14,10 @@ namespace Fraction_Calculator_WinForms
         public TCtlrState CtrlState;
         public enum TCtlrState { cStart, cEditing, FunDone, cValDone, cExpDone, cOpChange, cError }
 
+        public History History;
+
         //костыль
         private string LastOperation;
-
-        //private List<String> History;
 
         public TCtrl()
         {
@@ -25,7 +26,7 @@ namespace Fraction_Calculator_WinForms
             Memory = new TMemory();
             Fraction = new TFrac();
             CtrlState = TCtlrState.cStart;
-            //History = new List<String>();
+            History = new History();
         }
 
         public void EditCommand(string c)
@@ -91,9 +92,37 @@ namespace Fraction_Calculator_WinForms
                     break;
             }
         }
-        
+
+        private void PrepareRecord(ref Record record)
+        {
+            record.LOperand = Proc.Lop_Res_Read();
+            record.ROperand = Proc.Rop_Read();
+            //record.Operation = Proc.OprtnRead();
+
+            switch (Proc.OprtnRead())
+            {
+                case "None":
+                    record.Operation = "None";
+                    break;
+                case "Add":
+                    record.Operation = "+";
+                    break;
+                case "Sub":
+                    record.Operation = "-";
+                    break;
+                case "Mul":
+                    record.Operation = "*";
+                    break;
+                case "Dvd":
+                    record.Operation = "/";
+                    break;
+            }
+        }
+
         public string CalculatorCommand(string c)
         {
+            Record record = new Record();
+
             // Костыль на случай если Editor.Empty()
             try
             {
@@ -117,8 +146,7 @@ namespace Fraction_Calculator_WinForms
             }
             //Запомните, сукины дети, костыли это круто!
             //Давайте делать больше костылей
-            //Давайте всё утыкаем этими костылями
-            //Это же так весело, правда?
+            //Давайте всё утычем этими костылями
 
             LastOperation = c;
 
@@ -143,11 +171,9 @@ namespace Fraction_Calculator_WinForms
 
                         Editor.Clear();
                     }
-                    //if (Editor.Empty() && c != "=")
-                    //{
-                    //    //Fraction = Proc.Lop_Res_Read();
-                    //    Proc.Rop_Set(Fraction);
-                    //}
+
+                    //Готовим запись в историю
+                    PrepareRecord(ref record);
 
                     if (!(c == "Sqr" || c == "Rev"))
                     {
@@ -168,6 +194,13 @@ namespace Fraction_Calculator_WinForms
                     }
 
                     Fraction = Proc.Lop_Res_Read();
+
+                    record.Result = Fraction.Copy();
+
+                    History.AddRecord(record);
+                    //Record lastCalc = History.GetLastRecord();
+                    //dataGridView1.Rows.Add(new string[] { lastCalc.LOperand.GetFractionString(), lastCalc.Operation, lastCalc.ROperand.GetFractionString(), lastCalc.Result.GetFractionString() });
+
                     return Fraction.GetFractionString();
             }
 

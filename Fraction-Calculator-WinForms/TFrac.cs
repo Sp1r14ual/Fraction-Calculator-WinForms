@@ -1,6 +1,6 @@
 ﻿namespace Fraction_Calculator_WinForms
 {
-    internal class TFrac
+    public class TFrac
     {
         private int a;
         private int b;

@@ -1,6 +1,6 @@
 ﻿namespace Fraction_Calculator_WinForms
 {
-    internal class TEditor
+    public class TEditor
     {
         private string str;
 

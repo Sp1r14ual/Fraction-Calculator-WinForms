@@ -72,22 +72,43 @@ namespace Fraction_Calculator_WinForms
         private void button13_Click(object sender, EventArgs e)
         {
             textBox1.Text = controller.CalculatorCommand("+");
+
+            dataGridView1.Rows.Clear();
+            foreach (var record in controller.History.GetHistory())
+                dataGridView1.Rows.Add(new string[] { record.LOperand.GetFractionString(), record.Operation, record.ROperand.GetFractionString(), record.Result.GetFractionString() });
+
         }
         private void button14_Click(object sender, EventArgs e)
         {
             textBox1.Text = controller.CalculatorCommand("-");
+
+            dataGridView1.Rows.Clear();
+            foreach (var record in controller.History.GetHistory())
+                dataGridView1.Rows.Add(new string[] { record.LOperand.GetFractionString(), record.Operation, record.ROperand.GetFractionString(), record.Result.GetFractionString() });
         }
         private void button15_Click(object sender, EventArgs e)
         {
             textBox1.Text = controller.CalculatorCommand("*");
+
+            dataGridView1.Rows.Clear();
+            foreach (var record in controller.History.GetHistory())
+                dataGridView1.Rows.Add(new string[] { record.LOperand.GetFractionString(), record.Operation, record.ROperand.GetFractionString(), record.Result.GetFractionString() });
         }
         private void button16_Click(object sender, EventArgs e)
         {
             textBox1.Text = controller.CalculatorCommand("/");
+
+            dataGridView1.Rows.Clear();
+            foreach (var record in controller.History.GetHistory())
+                dataGridView1.Rows.Add(new string[] { record.LOperand.GetFractionString(), record.Operation, record.ROperand.GetFractionString(), record.Result.GetFractionString() });
         }
         private void button17_Click(object sender, EventArgs e)
         {
             textBox1.Text = controller.CalculatorCommand("=");
+
+            dataGridView1.Rows.Clear();
+            foreach (var record in controller.History.GetHistory())
+                dataGridView1.Rows.Add(new string[] { record.LOperand.GetFractionString(), record.Operation, record.ROperand.GetFractionString(), record.Result.GetFractionString() });
         }
         private void button18_Click(object sender, EventArgs e)
         {
@@ -130,6 +151,12 @@ namespace Fraction_Calculator_WinForms
             //Отрефакторить
             controller.Proc.ReSet();
             textBox1.Text = controller.CalculatorCommand("CE");
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            controller.History.Clear();
         }
     }
 }

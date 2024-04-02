@@ -1,6 +1,6 @@
 ﻿namespace Fraction_Calculator_WinForms
 {
-    internal class TMemory
+    public class TMemory
     {
         private TFrac FNumber;
 
