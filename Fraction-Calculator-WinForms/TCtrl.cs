@@ -16,6 +16,8 @@ namespace Fraction_Calculator_WinForms
 
         public History History;
 
+        private bool integer_format;
+
         //костыль
         private string LastOperation;
 
@@ -27,6 +29,18 @@ namespace Fraction_Calculator_WinForms
             Fraction = new TFrac();
             CtrlState = TCtlrState.cStart;
             History = new History();
+
+            integer_format = false;
+        }
+
+        public void integer_format_check()
+        {
+            integer_format = true;
+        }
+
+        public void integer_format_uncheck()
+        {
+            integer_format = false;
         }
 
         public void EditCommand(string c)
@@ -142,9 +156,9 @@ namespace Fraction_Calculator_WinForms
                 Editor.Clear();
                 Proc.Rop_Set(new TFrac());
                 LastOperation = c;
-                return Proc.Lop_Res_Read().GetFractionString();
+                return Proc.Lop_Res_Read().Denominator == 1 && integer_format ? Proc.Lop_Res_Read().GetFractionString().Split("/")[0] : Proc.Lop_Res_Read().GetFractionString();
             }
-            //Запомните, сукины дети, костыли это круто!
+            //Костыли это круто!
             //Давайте делать больше костылей
             //Давайте всё утычем этими костылями
 
@@ -190,7 +204,7 @@ namespace Fraction_Calculator_WinForms
                     {
                         FunctionCommand(c);
                         Fraction = Proc.OprtnRead() == "None" ? Proc.Lop_Res_Read() : Proc.Rop_Read();
-                        return Fraction.GetFractionString();
+                        return Fraction.Denominator == 1 && integer_format ? Fraction.GetFractionString().Split("/")[0] : Fraction.GetFractionString();
                     }
 
                     Fraction = Proc.Lop_Res_Read();
@@ -198,10 +212,8 @@ namespace Fraction_Calculator_WinForms
                     record.Result = Fraction.Copy();
 
                     History.AddRecord(record);
-                    //Record lastCalc = History.GetLastRecord();
-                    //dataGridView1.Rows.Add(new string[] { lastCalc.LOperand.GetFractionString(), lastCalc.Operation, lastCalc.ROperand.GetFractionString(), lastCalc.Result.GetFractionString() });
 
-                    return Fraction.GetFractionString();
+                    return Fraction.Denominator == 1 && integer_format ? Fraction.GetFractionString().Split("/")[0] : Fraction.GetFractionString();
             }
 
             return Editor.String;

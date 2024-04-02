@@ -8,6 +8,37 @@ namespace Fraction_Calculator_WinForms
             InitializeComponent();
         }
 
+        private void update_history()
+        {
+
+
+            dataGridView1.Rows.Clear();
+            foreach (var record in controller.History.GetHistory())
+            {
+                string loperand_arg = record.LOperand.Denominator == 1 && radioButton2.Checked
+                    ? record.LOperand.GetFractionString().Split("/")[0]
+                    : record.LOperand.GetFractionString();
+
+                string operation_arg = record.Operation;
+
+                string roperand_arg = record.ROperand.Denominator == 1 && radioButton2.Checked
+                    ? record.ROperand.GetFractionString().Split("/")[0]
+                    : record.ROperand.GetFractionString();
+
+                string result_arg = record.Result.Denominator == 1 && radioButton2.Checked
+                    ? record.Result.GetFractionString().Split("/")[0]
+                    : record.Result.GetFractionString();
+
+                dataGridView1.Rows.Add(new string[]
+                {
+                    loperand_arg,
+                    operation_arg,
+                    roperand_arg,
+                    result_arg
+                });
+            }
+        }
+
         //button 0
         private void button1_Click(object sender, EventArgs e)
         {
@@ -69,46 +100,37 @@ namespace Fraction_Calculator_WinForms
         {
             textBox1.Text = controller.CalculatorCommand("\\");
         }
+
         private void button13_Click(object sender, EventArgs e)
         {
             textBox1.Text = controller.CalculatorCommand("+");
 
-            dataGridView1.Rows.Clear();
-            foreach (var record in controller.History.GetHistory())
-                dataGridView1.Rows.Add(new string[] { record.LOperand.GetFractionString(), record.Operation, record.ROperand.GetFractionString(), record.Result.GetFractionString() });
+            update_history();
 
         }
         private void button14_Click(object sender, EventArgs e)
         {
             textBox1.Text = controller.CalculatorCommand("-");
 
-            dataGridView1.Rows.Clear();
-            foreach (var record in controller.History.GetHistory())
-                dataGridView1.Rows.Add(new string[] { record.LOperand.GetFractionString(), record.Operation, record.ROperand.GetFractionString(), record.Result.GetFractionString() });
+            update_history();
         }
         private void button15_Click(object sender, EventArgs e)
         {
             textBox1.Text = controller.CalculatorCommand("*");
 
-            dataGridView1.Rows.Clear();
-            foreach (var record in controller.History.GetHistory())
-                dataGridView1.Rows.Add(new string[] { record.LOperand.GetFractionString(), record.Operation, record.ROperand.GetFractionString(), record.Result.GetFractionString() });
+            update_history();
         }
         private void button16_Click(object sender, EventArgs e)
         {
             textBox1.Text = controller.CalculatorCommand("/");
 
-            dataGridView1.Rows.Clear();
-            foreach (var record in controller.History.GetHistory())
-                dataGridView1.Rows.Add(new string[] { record.LOperand.GetFractionString(), record.Operation, record.ROperand.GetFractionString(), record.Result.GetFractionString() });
+            update_history();
         }
         private void button17_Click(object sender, EventArgs e)
         {
             textBox1.Text = controller.CalculatorCommand("=");
 
-            dataGridView1.Rows.Clear();
-            foreach (var record in controller.History.GetHistory())
-                dataGridView1.Rows.Add(new string[] { record.LOperand.GetFractionString(), record.Operation, record.ROperand.GetFractionString(), record.Result.GetFractionString() });
+            update_history();
         }
         private void button18_Click(object sender, EventArgs e)
         {
@@ -157,6 +179,16 @@ namespace Fraction_Calculator_WinForms
         {
             dataGridView1.Rows.Clear();
             controller.History.Clear();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            controller.integer_format_uncheck();
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            controller.integer_format_check();
         }
     }
 }

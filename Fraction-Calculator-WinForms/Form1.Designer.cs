@@ -59,6 +59,9 @@
             tabPage1 = new TabPage();
             label1 = new Label();
             tabPage2 = new TabPage();
+            radioButton2 = new RadioButton();
+            radioButton1 = new RadioButton();
+            label3 = new Label();
             tabPage3 = new TabPage();
             button27 = new Button();
             label2 = new Label();
@@ -70,6 +73,7 @@
             tabPage4 = new TabPage();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -403,6 +407,9 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(radioButton2);
+            tabPage2.Controls.Add(radioButton1);
+            tabPage2.Controls.Add(label3);
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -410,6 +417,42 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Настройки";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            radioButton2.Location = new Point(297, 61);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(99, 29);
+            radioButton2.TabIndex = 2;
+            radioButton2.Text = "Число";
+            radioButton2.UseVisualStyleBackColor = true;
+            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Checked = true;
+            radioButton1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            radioButton1.Location = new Point(193, 61);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(98, 29);
+            radioButton1.TabIndex = 1;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Дробь";
+            radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label3.Location = new Point(121, 21);
+            label3.Name = "label3";
+            label3.Size = new Size(356, 25);
+            label3.TabIndex = 0;
+            label3.Text = "Формат отображения результата";
             // 
             // tabPage3
             // 
@@ -505,6 +548,8 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -553,5 +598,8 @@
         private Label label1;
         private Label label2;
         private Button button27;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
+        private Label label3;
     }
 }
