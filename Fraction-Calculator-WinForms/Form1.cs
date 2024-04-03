@@ -39,6 +39,12 @@
             }
         }
 
+        private bool check_input()
+        {
+            string input = textBox1.Text;
+            return input.Split("/")[0].Length <= 10 && input.Split("/")[1].Length <= 10;
+        }
+
         //button 0
         private void button1_Click(object sender, EventArgs e)
         {
@@ -103,34 +109,69 @@
 
         private void button13_Click(object sender, EventArgs e)
         {
-            textBox1.Text = controller.CalculatorCommand("+");
-
-            update_history();
-
+            if (check_input())
+            {
+                textBox1.Text = controller.CalculatorCommand("+");
+                update_history();
+            }
+            else
+            {
+                controller.Editor.Clear();
+                textBox1.Text = "ERR";
+            }
         }
+
         private void button14_Click(object sender, EventArgs e)
         {
-            textBox1.Text = controller.CalculatorCommand("-");
-
-            update_history();
+            if (check_input())
+            {
+                textBox1.Text = controller.CalculatorCommand("-");
+                update_history();
+            }
+            else
+            {
+                controller.Editor.Clear();
+                textBox1.Text = "ERR";
+            }
         }
         private void button15_Click(object sender, EventArgs e)
         {
-            textBox1.Text = controller.CalculatorCommand("*");
-
-            update_history();
+            if (check_input())
+            {
+                textBox1.Text = controller.CalculatorCommand("*");
+                update_history();
+            }
+            else
+            {
+                controller.Editor.Clear();
+                textBox1.Text = "ERR";
+            }
         }
         private void button16_Click(object sender, EventArgs e)
         {
-            textBox1.Text = controller.CalculatorCommand("/");
-
-            update_history();
+            if (check_input())
+            {
+                textBox1.Text = controller.CalculatorCommand("/");
+                update_history();
+            }
+            else
+            {
+                controller.Editor.Clear();
+                textBox1.Text = "ERR";
+            }
         }
         private void button17_Click(object sender, EventArgs e)
         {
-            textBox1.Text = controller.CalculatorCommand("=");
-
-            update_history();
+            if (check_input())
+            {
+                textBox1.Text = controller.CalculatorCommand("=");
+                update_history();
+            }
+            else
+            {
+                controller.Editor.Clear();
+                textBox1.Text = "ERR";
+            }
         }
         private void button18_Click(object sender, EventArgs e)
         {
@@ -260,22 +301,55 @@
                     break;
                 case "Oemplus":
                 case "Add":
-                    textBox1.Text = controller.CalculatorCommand("+");
-                    update_history();
+                    if (check_input())
+                    {
+                        textBox1.Text = controller.CalculatorCommand("+");
+                        update_history();
+                    }
+                    else
+                    {
+                        controller.Editor.Clear();
+                        textBox1.Text = "ERR";
+                    }
+
                     break;
                 case "OemMinus":
                 case "Subtract":
-                    textBox1.Text = controller.CalculatorCommand("-");
-                    update_history();
+                    if (check_input())
+                    {
+                        textBox1.Text = controller.CalculatorCommand("-");
+                        update_history();
+                    }
+                    else
+                    {
+                        controller.Editor.Clear();
+                        textBox1.Text = "ERR";
+                    }
                     break;
                 case "Multiply":
-                    textBox1.Text = controller.CalculatorCommand("*");
-                    update_history();
+                    if (check_input())
+                    {
+                        textBox1.Text = controller.CalculatorCommand("*");
+                        update_history();
+                    }
+                    else
+                    {
+                        controller.Editor.Clear();
+                        textBox1.Text = "ERR";
+                    }
                     break;
                 case "Divide":
                 case "Oem2":
-                    textBox1.Text = controller.CalculatorCommand("/");
-                    update_history();
+                    if (check_input())
+                    {
+                        textBox1.Text = controller.CalculatorCommand("/");
+                        update_history();
+                    }
+                    else
+                    {
+                        controller.Editor.Clear();
+                        textBox1.Text = "ERR";
+                    }
                     break;
                 case "Back":
                     textBox1.Text = controller.CalculatorCommand("BS");
@@ -288,8 +362,16 @@
                     textBox1.Text = controller.CalculatorCommand("CE");
                     break;
                 case "Enter":
-                    textBox1.Text = controller.CalculatorCommand("=");
-                    update_history();
+                    if (check_input())
+                    {
+                        textBox1.Text = controller.CalculatorCommand("=");
+                        update_history();
+                    }
+                    else
+                    {
+                        controller.Editor.Clear();
+                        textBox1.Text = "ERR";
+                    }
                     break;
                 default:
                     break;
