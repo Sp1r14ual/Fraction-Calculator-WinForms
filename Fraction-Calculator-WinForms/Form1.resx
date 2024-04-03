@@ -117,6 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Данное программное обеспечение представляет собой калькулятор простых дробей.
+
+Инструкция по эксплуатации.
+1. Во вкладке "Калькулятор" вводите числитель и знаменатель дроби кнопками на клавиатуре или графическом интерфейсе, соответствующие цифрам. 
+а) В качестве разделителя используется символ "\". 
+б) Клавиши "+", "-", "*", "/", "=" соответствуют стандартным математическим операциям сложения, вычитания, умножения, деления и равенства.
+в) Клавиши x^2 и 1/x соответствуют стандартным математическим функциям возведения в квадрат и взятия обратного по умножению значения.
+г) Клавиши "M+", "MS", "MR", "MC" соответствуют функциям работы с памятью "Прибавить к памяти", "Поместить в память", "Считать из памяти", "Очистить память".
+
+2. Во вкладке "Настройки" можно выбрать один из двух форматов отображения результата в форме простой дроби или числа (в случае, если у дроби значение знаменателя 1 и, следовательно, её можно сократить)
+
+3. Во вкладке "История" сохраняется история всех проведенных вычислений. Чтобы очистить историю, требуется нажать на кнопку "Очистить".
+
+
+Данный проект был реализован в рамках дисциплины "Технологии разработки программного обеспечения"
+студентами ФПМИ НГТУ
+Панасенко Сергеем
+Курочкиным Егором
+Сафроновой Ариной
+
+2024.
+
+--------------------------------
+Мудрец говорит, что в мире существует только одно правило. Крохотный вопрос, от которого зависит наша удача. Чем чаще будет звучать этот вопрос, тем сильнее мы будем становиться. Вы поняли, что это за вопрос, мистер Грин: что это даёт мне?
+"Револьвер", 2005
+--------------------------------</value>
+  </data>
+  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column4.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

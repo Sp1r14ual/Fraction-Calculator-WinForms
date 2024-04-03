@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             textBox1 = new TextBox();
             button1 = new Button();
             button2 = new Button();
@@ -71,11 +72,14 @@
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             tabPage4 = new TabPage();
+            richTextBox1 = new RichTextBox();
+            label4 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            tabPage4.SuspendLayout();
             SuspendLayout();
             // 
             // textBox1
@@ -531,12 +535,32 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(richTextBox1);
+            tabPage4.Controls.Add(label4);
             tabPage4.Location = new Point(4, 29);
             tabPage4.Name = "tabPage4";
             tabPage4.Size = new Size(601, 433);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Справка";
             tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(30, 53);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(540, 295);
+            richTextBox1.TabIndex = 1;
+            richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label4.Location = new Point(248, 14);
+            label4.Name = "label4";
+            label4.Size = new Size(104, 25);
+            label4.TabIndex = 0;
+            label4.Text = "Справка";
             // 
             // Form1
             // 
@@ -556,6 +580,8 @@
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            tabPage4.ResumeLayout(false);
+            tabPage4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -604,5 +630,7 @@
         private RadioButton radioButton2;
         private RadioButton radioButton1;
         private Label label3;
+        private Label label4;
+        private RichTextBox richTextBox1;
     }
 }
