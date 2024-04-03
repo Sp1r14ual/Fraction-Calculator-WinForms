@@ -82,6 +82,7 @@
             // 
             textBox1.Location = new Point(110, 85);
             textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
             textBox1.Size = new Size(378, 27);
             textBox1.TabIndex = 0;
             // 
@@ -543,8 +544,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(621, 477);
             Controls.Add(tabControl1);
+            KeyPreview = true;
             Name = "Form1";
             Text = "Fraction Calculator";
+            KeyUp += Form1_KeyUp;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
