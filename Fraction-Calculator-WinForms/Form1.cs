@@ -41,6 +41,9 @@
 
         private bool check_input()
         {
+            if (!textBox1.Text.Contains("/"))
+                return textBox1.Text.Split("/")[0].Length <= 10;
+
             string input = textBox1.Text;
             return input.Split("/")[0].Length <= 10 && input.Split("/")[1].Length <= 10;
         }
