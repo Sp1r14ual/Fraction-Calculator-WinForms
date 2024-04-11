@@ -154,6 +154,7 @@ namespace Fraction_Calculator_WinForms
             if (c != "=" && LastOperation == "=")
             {
                 Editor.Clear();
+                OperationCommand(c);
                 Proc.Rop_Set(new TFrac());
                 LastOperation = c;
                 return Proc.Lop_Res_Read().Denominator == 1 && integer_format ? Proc.Lop_Res_Read().GetFractionString().Split("/")[0] : Proc.Lop_Res_Read().GetFractionString();
