@@ -127,18 +127,6 @@
                 case "Sgn":
                     AddSign();
                     return String;
-                //case "+":
-                //    AddSymbol("+");
-                //    return String;
-                //case "-":
-                //    AddSymbol("-");
-                //    return String;
-                //case "*":
-                //    AddSymbol("*");
-                //    return String;
-                //case "/":
-                //    AddSymbol(":");
-                //    return String;
                 case "BS":
                     BackSpace();
                     return String;

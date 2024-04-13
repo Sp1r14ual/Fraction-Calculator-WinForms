@@ -66,6 +66,14 @@ namespace Fraction_Calculator_WinForms
 
         public List<Record> GetHistory()
         {
+            try
+            {
+                L.Remove(L.Single(r => r.Operation == "None"));
+            }
+            catch
+            {
+            }
+
             return L;
         }
 

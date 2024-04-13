@@ -203,8 +203,17 @@ namespace Fraction_Calculator_WinForms
                     }
                     else
                     {
+                        record.LOperand = Fraction.Copy();
+                        record.Operation = c;
+
                         FunctionCommand(c);
                         Fraction = Proc.OprtnRead() == "None" ? Proc.Lop_Res_Read() : Proc.Rop_Read();
+
+                        record.ROperand = new TFrac();
+                        record.Result = Fraction.Copy();
+
+                        History.AddRecord(record);
+
                         return Fraction.Denominator == 1 && integer_format ? Fraction.GetFractionString().Split("/")[0] : Fraction.GetFractionString();
                     }
 

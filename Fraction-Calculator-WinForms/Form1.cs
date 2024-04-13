@@ -10,9 +10,8 @@
 
         private void update_history()
         {
-
-
             dataGridView1.Rows.Clear();
+
             foreach (var record in controller.History.GetHistory())
             {
                 string loperand_arg = record.LOperand.Denominator == 1 && radioButton2.Checked
@@ -179,10 +178,12 @@
         private void button18_Click(object sender, EventArgs e)
         {
             textBox1.Text = controller.CalculatorCommand("Sqr");
+            update_history();
         }
         private void button19_Click(object sender, EventArgs e)
         {
             textBox1.Text = controller.CalculatorCommand("Rev");
+            update_history();
         }
 
         private void button20_Click(object sender, EventArgs e)
